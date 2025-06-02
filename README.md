@@ -3,6 +3,7 @@
 轻量级的 XLua 扩展库，帮你优雅管理 Lua 和 C# 委托绑定，自动生成配置，减少重复劳动。  
 专门为了Lua映射为c#方法制作。
 
+！！！要与XLua核心一起使用
 ---
 
 ## 特性
@@ -15,11 +16,6 @@
 - 轻量无侵入，不改变 XLua 原有结构，易于集成和维护
 - 提供LuaManager 用来通一管理Lua虚拟机，里面还有很多方法，可以提供更“手动”的lua操作
 
----
-
-## 安装
-
-直接复制 `Scripts/LuaManager` 文件夹到你的 Unity 项目即可，无需额外配置。
 
 ---
 
@@ -54,9 +50,15 @@
     }
     
     ```
+4.完成代码编写后，在编辑器顶部工具栏,
+先XLua->Clean Generate Code 清除自动生成的代码，
+再 XLua->Generate XLuaDelegate Registration 生成Lua的映射配置到LuaManager文件夹， 
+最后再Xlua->Generate Code 生成XLua辅助代码
 
-4. 在启动时调用 `Register` 方法，即可完成 Lua 函数与 C# 委托的绑定。
+5. 在启动时调用 `LuaManager.AutoRegisterAll()` 方法，即可完成 Lua 函数与 C# 委托的绑定。
 
+具体使用可以参考 release 的 unitypackage 里的Main.cs脚本
+另外 Lua 脚本我放在 StreamingAssets/Lua 里面
 ---
 
 ## 设计理念
